@@ -32,7 +32,10 @@ app = FastAPI(
 
 ROOT = Path(__file__).parent.parent
 
-ORIGINS = os.environ.get("CORS_ORIGINS", "").split(",")
+# ORIGINS = os.environ.get("CORS_ORIGINS", "").split(",")
+ORIGINS = [
+    "http://localhost:3000",  
+]
 
 if ORIGINS:
     app.add_middleware(
