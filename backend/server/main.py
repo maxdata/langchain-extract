@@ -57,26 +57,26 @@ app.include_router(suggest.router)
 app.include_router(shared.router)
 app.include_router(configurables.router)
 
-add_routes(
-    app,
-    extraction_runnable.with_types(
-        input_type=ExtractRequest, output_type=ExtractResponse
-    ),
-    path="/extract_text",
-    enabled_endpoints=["invoke", "batch"],
-)
+# add_routes(
+#     app,
+#     extraction_runnable.with_types(
+#         input_type=ExtractRequest, output_type=ExtractResponse
+#     ),
+#     path="/extract_text",
+#     enabled_endpoints=["invoke", "batch"],
+# )
 
 
 # Serve the frontend
-UI_DIR = str(ROOT / "ui")
+# UI_DIR = str(ROOT / "ui")
 
-if os.path.exists(UI_DIR):
-    app.mount("/", StaticFiles(directory=UI_DIR, html=True), name="ui")
-else:
-    logger.warning("No UI directory found, serving API only.")
+# if os.path.exists(UI_DIR):
+#     app.mount("/", StaticFiles(directory=UI_DIR, html=True), name="ui")
+# else:
+#     logger.warning("No UI directory found, serving API only.")
 
 
-if __name__ == "__main__":
-    import uvicorn
+# if __name__ == "__main__":
+#     import uvicorn
 
-    uvicorn.run(app, host="localhost", port=8000)
+#     uvicorn.run(app, host="localhost", port=8000)

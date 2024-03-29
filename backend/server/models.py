@@ -4,7 +4,9 @@ from typing import Optional
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_fireworks import ChatFireworks
 from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def get_supported_models():
     """Get models according to environment secrets."""

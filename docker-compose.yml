@@ -23,38 +23,38 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  backend:
-    build:
-      context: .
-      dockerfile: ./backend/Dockerfile
-      target: development
-    env_file:
-      - .local.env
-    environment:
-      - PG_HOST=postgres
-        # Define CORS origins for dev work on UI
-      - CORS_ORIGINS=http://localhost:3000
-    ports:
-      - "8000:8000" # Backend is accessible on localhost:8100
-    depends_on:
-      - postgres
-    volumes:
-      - ./backend:/backend
+  # backend:
+  #   build:
+  #     context: .
+  #     dockerfile: ./backend/Dockerfile
+  #     target: development
+  #   env_file:
+  #     - .local.env
+  #   environment:
+  #     - PG_HOST=postgres
+  #       # Define CORS origins for dev work on UI
+  #     - CORS_ORIGINS=http://localhost:3000
+  #   ports:
+  #     - "8000:8000" # Backend is accessible on localhost:8100
+  #   depends_on:
+  #     - postgres
+  #   volumes:
+  #     - ./backend:/backend
 
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: ./Dockerfile
-      target: development
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=development
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    depends_on:
-      - backend
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: ./Dockerfile
+  #     target: development
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NODE_ENV=development
+  #   volumes:
+  #     - ./frontend:/app
+  #     - /app/node_modules
+  #   depends_on:
+  #     - backend
 
 volumes:
   postgres_data:

@@ -29,8 +29,8 @@ class ExtractionExample(BaseModel):
     text: str = Field(..., description="The input text")
     output: List[Dict[str, Any]] = Field(
         ..., description="The expected output of the example. A list of objects."
-    )
-
+    )    
+    
 
 class ExtractRequest(CustomUserType):
     """Request body for the extract endpoint."""
@@ -50,11 +50,15 @@ class ExtractRequest(CustomUserType):
     )
     model_name: Optional[str] = Field("gpt-3.5-turbo", description="Chat model to use.")
 
-    @validator("json_schema")
-    def validate_schema(cls, v: Any) -> Dict[str, Any]:
-        """Validate the schema."""
-        validate_json_schema(v)
-        return v
+    # @validator("json_schema")
+    # def validate_schema(cls, v: Any) -> Dict[str, Any]:
+    #     """Validate the schema."""
+    #     validate_json_schema(v)
+    #     return v
+    
+    class Config:
+        arbitrary_types_allowed = True
+    
 
 
 class ExtractResponse(TypedDict, total=False):
