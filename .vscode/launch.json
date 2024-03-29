@@ -8,10 +8,10 @@
             "name": "backend",
             "type": "debugpy",
             "request": "launch",
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/backend",
             "module": "uvicorn",
             "args": [
-                "backend.server.main:app",
+                "server.main:app",
                 "--reload",
                 "--host", "0.0.0.0", 
                 "--port", "3002", 
