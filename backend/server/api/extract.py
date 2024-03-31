@@ -25,7 +25,9 @@ async def extract_using_existing_extractor(
     extractor_id: Annotated[UUID, Form()],
     text: Optional[str] = Form(None),
     mode: Literal["entire_document", "retrieval"] = Form("entire_document"),
-    file: Optional[UploadFile] = File(None),
+    # no button in swag if Optional
+    # file: Optional[UploadFile] = File(None),
+    file: UploadFile = File(None),
     model_name: Optional[str] = Form(DEFAULT_MODEL),
     session: Session = Depends(get_session),
     user_id: UUID = Depends(UserToken),

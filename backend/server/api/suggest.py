@@ -79,7 +79,7 @@ UPDATE_PROMPT = ChatPromptTemplate.from_messages(
         (
             "system",
             "You are are an expert ontologist and have been asked to help a user "
-            "define an information extractor.gThe existing extractor schema is "
+            "define an information extractor. The existing extractor schema is "
             "provided.\ng```\n{json_schema}\n```\nThe user will describe a desired "
             "modification to the schema (e.g., adding a new field, changing a field "
             "type, etc.).Your goal is to provide a new schema that incorporates the "
